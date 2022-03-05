@@ -1,9 +1,9 @@
 // contracts/BoxV2.sol
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.2;
+pragma solidity ^0.8.8;
  
 contract BoxV2 {
-    uint256 private value;
+    uint256 internal value;
  
     // Emitted when the stored value changes
     event ValueChanged(uint256 newValue);
@@ -25,7 +25,7 @@ contract BoxV2 {
         emit ValueChanged(value);
     }
 
-    function version() public view returns (uint256) {
+    function version() public pure returns (uint256) {
         return 2;
     }
 }
