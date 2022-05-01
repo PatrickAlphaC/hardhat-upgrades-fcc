@@ -48,3 +48,10 @@ contract ImplementationB {
         value = newValue + 2;
     }
 }
+
+// function setImplementation(){}
+// Transparent Proxy -> Ok, only admins can call functions on the proxy
+// anyone else ALWAYS gets sent to the fallback contract.
+
+// UUPS -> Where all upgrade logic is in the implementation contract, and
+// you can't have 2 functions with the same function selector.
