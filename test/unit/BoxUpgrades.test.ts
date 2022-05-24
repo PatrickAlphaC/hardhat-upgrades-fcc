@@ -9,7 +9,7 @@ import { TransparentUpgradeableProxy, Box, BoxV2, ProxyAdmin } from "../../typec
 
 !developmentChains.includes(network.name)
     ? describe.skip
-    : describe("Upgrading tests", async function () {
+    : describe("Upgrading tests", function () {
           let box: Box, transparentProxy: TransparentUpgradeableProxy, proxyBox: Box, boxProxyAdmin: ProxyAdmin
           beforeEach(async () => {
               await deployments.fixture(["box"])
