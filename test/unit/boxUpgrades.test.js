@@ -6,7 +6,7 @@ const { developmentChains } = require("../../helper-hardhat-config")
 
 !developmentChains.includes(network.name)
     ? describe.skip
-    : describe("Upgrading tests", async function () {
+    : describe("Upgrading tests", function () {
           let box, transparentProxy, proxyBox, boxProxyAdmin
           beforeEach(async () => {
               await deployments.fixture(["box"])
