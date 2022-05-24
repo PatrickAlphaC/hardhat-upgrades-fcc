@@ -1,13 +1,16 @@
 // We are going to skimp a bit on these tests...
 
-const { assert } = require("chai")
-const { network, deployments, ethers } = require("hardhat")
-const { developmentChains } = require("../../helper-hardhat-config")
+import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers"
+import { assert, expect } from "chai"
+import { BigNumber } from "ethers"
+import { network, deployments, ethers }from "hardhat"
+import { developmentChains, networkConfig} from "../../helper-hardhat-config"
+import { TransparentUpgradeableProxy, Box, BoxV2, ProxyAdmin } from "../../typechain-types"
 
 !developmentChains.includes(network.name)
     ? describe.skip
     : describe("Upgrading tests", async function () {
-          let box, transparentProxy, proxyBox, boxProxyAdmin
+          let box: Box, transparentProxy: TransparentUpgradeableProxy, proxyBox: Box, boxProxyAdmin: ProxyAdmin
           beforeEach(async () => {
               await deployments.fixture(["box"])
               box = await ethers.getContract("Box")

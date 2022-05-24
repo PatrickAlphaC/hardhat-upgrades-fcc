@@ -1,11 +1,13 @@
-require("@nomiclabs/hardhat-waffle")
-require("@nomiclabs/hardhat-etherscan")
-require("hardhat-deploy")
-require("solidity-coverage")
-require("hardhat-gas-reporter")
-require("hardhat-contract-sizer")
-require("dotenv").config()
-require("@openzeppelin/hardhat-upgrades")
+import "@typechain/hardhat"
+import "@nomiclabs/hardhat-waffle"
+import "@nomiclabs/hardhat-etherscan"
+import "@nomiclabs/hardhat-ethers"
+import "hardhat-gas-reporter"
+import "dotenv/config"
+import "solidity-coverage"
+import "hardhat-deploy"
+import "solidity-coverage"
+import { HardhatUserConfig } from "hardhat/config"
 
 /**
  * @type import('hardhat/config').HardhatUserConfig
@@ -27,9 +29,9 @@ const MNEMONIC = process.env.MNEMONIC || "your mnemonic"
 // Your API key for Etherscan, obtain one at https://etherscan.io/
 const ETHERSCAN_API_KEY = process.env.ETHERSCAN_API_KEY || "Your etherscan API key"
 const POLYGONSCAN_API_KEY = process.env.POLYGONSCAN_API_KEY || "Your polygonscan API key"
-const REPORT_GAS = process.env.REPORT_GAS || false
+const REPORT_GAS = process.env.REPORT_GAS == "true" || false
 
-module.exports = {
+const config: HardhatUserConfig = {
     defaultNetwork: "hardhat",
     networks: {
         hardhat: {
@@ -91,10 +93,6 @@ module.exports = {
         noColors: true,
         // coinmarketcap: process.env.COINMARKETCAP_API_KEY,
     },
-    contractSizer: {
-        runOnCompile: false,
-        only: ["Raffle"],
-    },
     namedAccounts: {
         deployer: {
             default: 0, // here this will by default take the first account as deployer
@@ -118,3 +116,5 @@ module.exports = {
         timeout: 200000, // 200 seconds max for running tests
     },
 }
+
+export default config
