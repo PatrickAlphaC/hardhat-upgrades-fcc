@@ -100,3 +100,4 @@ lint/tmp/
 
 gas-report.txt
 .openzeppelin
+typechain-types
