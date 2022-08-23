@@ -1,5 +1,6 @@
 const { developmentChains, VERIFICATION_BLOCK_CONFIRMATIONS } = require("../helper-hardhat-config")
 const { network, deployments, deployer } = require("hardhat")
+const { verify } = require("../helper-functions")
 
 async function main() {
     const { deploy, log } = deployments
@@ -21,7 +22,7 @@ async function main() {
     // Verify the deployment
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying...")
-        await verify(boxV2.address, arguments)
+        await verify(boxV2.address, [])
     }
 
     // Upgrade!
