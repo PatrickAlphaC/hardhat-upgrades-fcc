@@ -1,6 +1,7 @@
 const { developmentChains, VERIFICATION_BLOCK_CONFIRMATIONS } = require("../helper-hardhat-config")
 
 const { network } = require("hardhat")
+const { verify } = require("../helper-functions")
 
 module.exports = async ({ getNamedAccounts, deployments }) => {
     const { deploy, log } = deployments
@@ -25,7 +26,7 @@ module.exports = async ({ getNamedAccounts, deployments }) => {
     // Verify the deployment
     if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
         log("Verifying...")
-        await verify(box.address, arguments)
+        await verify(box.address, [])
     }
     log("----------------------------------------------------")
 }
