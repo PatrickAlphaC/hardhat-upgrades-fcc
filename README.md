@@ -27,8 +27,7 @@ This is a section of the Javascript Blockchain/Smart Contract FreeCodeCamp Cours
 
 This project is apart of the Hardhat FreeCodeCamp video.
 
-Video coming soon...
-
+Checkout the full blockchain solidity course video [here](https://www.youtube.com/watch?v=gyMwXuJrbJQ)
 # Getting Started
 
 ## Requirements
