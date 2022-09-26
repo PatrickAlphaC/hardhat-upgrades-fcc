@@ -82,7 +82,7 @@ module.exports = {
     },
     contractSizer: {
         runOnCompile: false,
-        only: ["Raffle"],
+        only: ["Box"],
     },
     namedAccounts: {
         deployer: {
